@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<!--
+  STUDENT CHECKLIST (EDIT THESE FIRST)
+  1) Replace [Your Name], [Student Name], [Grade], [School Name]
+  2) Update URLs: https://YOUR-USERNAME.github.io/YOUR-REPO/
+  3) Add images: images/portrait.jpg and images/social-preview.jpg
+  4) Update Contact section (email + GitHub)
+  5) Replace placeholder projects, notes, and timeline items with your real work
+-->
+<html lang="en">
+<!--
+  TEMPLATE LICENSE (MIT)
+  Copyright (c) 2026 Prof. Vinay Kanth Rao Kodipelly
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+-->
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+  <title><!-- STUDENT: Your Name -->[Your Name] — Academic Portfolio</title>
+
+  <!-- Basic SEO -->
+  <meta
+    name="description"
+    content="Academic and STEM portfolio for [Student Name], a high school student building a documented record of coursework, projects, events, and leadership."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="[Student Name] — Academic Portfolio" />
+  <meta
+    property="og:description"
+    content="Academic portfolio showcasing coursework, projects, competitions, and leadership."
+  />
+  <!-- STUDENT: Add a 1200x630 social preview image at images/social-preview.jpg -->
+  <meta property="og:image" content="images/social-preview.jpg" />
+  <meta property="og:url" content="https://YOUR-USERNAME.github.io/YOUR-REPO/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Template credit & license -->
+  <meta
+    name="author"
+    content="[Student Name] (student); template by Prof. Vinay Kanth Rao Kodipelly"
+  />
+  <meta name="license" content="MIT License" />
+  <link rel="license" href="https://opensource.org/license/mit/" />
+  <meta name="template" content="Portfolio template by Prof. Vinay Kanth Rao Kodipelly; credit required under MIT License" />
+
+  <!-- Canonical (STUDENT: update to your GitHub Pages URL) -->
+  <link rel="canonical" href="https://YOUR-USERNAME.github.io/YOUR-REPO/" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* =========================================================
+       SECTION 1: DESIGN TOKENS (CSS VARIABLES)
+       ========================================================= */
+
+    :root {
+      /* 1.1: Colors */
+      --navy: #1f2937;      /* deep charcoal */
+      --green: #4b5563;     /* muted slate */
+      --gold: #9ca3af;      /* neutral gray */
+      --teal-dark: #00796B; /* thematic */
+      --teal-light: #E0F2F1; /* thematic light */
+      --ink: #0f172a;       /* heading ink */
+      --muted: #475569;     /* body text */
+      --bg: #f8fafc;        /* very light gray */
+      --card: #FFFFFF;      /* surfaces */
+      --border: #e5e7eb;    /* lines */
+
+      /* 1.2: Stat Card Backgrounds */
+      --stat-bg-1: #e7f7e7; /* light green */
+      --stat-bg-2: #e9f0ff; /* light blue */
+      --stat-bg-3: #f3eef9; /* light purple */
+      --stat-bg-4: #fff9e6; /* light yellow */
+      --stat-bg-5: #fdeeee; /* light red */
+
+      /* 1.3: Typography */
+      --font-body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+        sans-serif;
+      --font-heading: "Poppins", system-ui, sans-serif;
+
+      /* 1.4: Spacing & Sizing */
+      --s-12: 12px;
+      --s-16: 16px;
+      --container: 1200px;
+
+      /* 1.5: Borders & Radii */
+      --r-8: 8px;
+      --r-10: 10px;
+      --r-14: 14px;
+      --r-pill: 999px;
+
+      /* 1.6: Shadows */
+      --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.06);
+      --shadow-2: 0 4px 14px rgba(0, 0, 0, 0.08);
+      --shadow-3: 0 6px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    /* =========================================================
+       SECTION 2: BASE STYLES & ACCESSIBILITY
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    :focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--muted);
+      font: 400 1rem/1.6 var(--font-body);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0.25em 0 0.4em;
+      font-family: var(--font-heading);
+      color: var(--navy);
+    }
+    h1 {
+      font-size: clamp(2rem, 3vw + 1rem, 3.25rem);
+      font-weight: 800;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 1.2vw + 1rem, 2rem);
+      font-weight: 800;
+    }
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+    a {
+      color: var(--navy);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .skip {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip:focus {
+      left: 16px;
+      top: 12px;
+      width: auto;
+      height: auto;
+      background: #fff;
+      color: var(--navy);
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-2);
+      z-index: 100;
+    }
+
+    /* =========================================================
+       SECTION 3: LAYOUT & UTILITIES
+       ========================================================= */
+
+    .container {
+      max-width: var(--container);
+      margin-inline: auto;
+      padding: 0 20px;
+    }
+    .section {
+      padding: 48px 0;
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 900px;
+    }
+    .section--bg-card {
+      background: var(--card);
+    }
+    .surface {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-14);
+      box-shadow: var(--shadow-2);
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .grid-2 {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .split {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 360px 1fr;
+    }
+
+    @media (max-width: 900px) {
+      .grid-3 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 1000px) {
+      .split {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .row--tight {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 8px;
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-up.is-visible .stat-card {
+      transition-delay: calc(var(--child-index) * 100ms);
+    }
+
+    /* =========================================================
+       SECTION 4: UI COMPONENTS
+       ========================================================= */
+
+    /* Header / Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 3px solid rgba(75, 85, 99, 0.18);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.92);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 0;
+      min-height: 56px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 10px 6px 6px;
+      border-radius: 26px;
+      transition: 0.2s;
+    }
+    .brand:hover {
+      background: rgba(248, 249, 255, 0.8);
+      box-shadow: 0 3px 10px rgba(26, 35, 126, 0.05);
+      transform: translateY(-1px);
+    }
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      box-shadow: 0 2px 6px rgba(26, 35, 126, 0.18);
+      color: #fff;
+      font: 800 18px var(--font-heading);
+    }
+    .brand-title {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+    .brand-title .t1 {
+      font: 800 1.05rem var(--font-heading);
+      color: var(--navy);
+      letter-spacing: -0.01em;
+    }
+    .brand-title .t2 {
+      font: 700 0.85rem var(--font-body);
+      color: var(--navy);
+      opacity: 0.95;
+    }
+    .brand-title .t3 {
+      font: 700 0.7rem var(--font-body);
+      color: var(--green);
+      letter-spacing: 0.03em;
+    }
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .nav-links a {
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      background: rgba(75, 85, 99, 0.08);
+      color: var(--green);
+    }
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      color: var(--navy);
+      padding: 4px;
+      cursor: pointer;
+      line-height: 1;
+      margin-left: auto;
+    }
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 56px;
+        bottom: 0;
+        background: var(--card);
+        padding: 12px 0;
+        box-shadow: var(--shadow-2);
+        overflow-y: auto;
+      }
+      .nav-links.show {
+        display: flex;
+        flex-direction: column;
+      }
+      .nav-links a {
+        padding: 14px 20px;
+        border-radius: 0;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 28px;
+      border: 2px solid transparent;
+      font: 800 0.9rem var(--font-body);
+      transition: filter 0.2s, background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .btn--primary {
+      background: var(--gold);
+      color: #111827;
+      box-shadow: var(--shadow-1);
+    }
+    .btn--primary:hover {
+      filter: brightness(0.97);
+    }
+    .btn--secondary {
+      background: var(--green);
+      color: #fff;
+      box-shadow: var(--shadow-1);
+    }
+    .btn--secondary:hover {
+      filter: brightness(0.97);
+    }
+    .btn--quiet {
+      background: var(--card);
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+    .btn--quiet:hover {
+      background: #f1f5f9;
+    }
+
+    /* Chips / Pills */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: var(--r-pill);
+      border: 1px solid var(--border);
+      background: #f8faff;
+      color: var(--navy);
+      font: 700 0.85rem var(--font-body);
+    }
+    .chip[data-variant="grade"] {
+      background: #eff6ff;
+      border-color: #dbeafe;
+    }
+    .chip[data-variant="tag"] {
+      background: #f1f5f9;
+      border-color: #e2e8f0;
+      color: #334155;
+    }
+    .chip[data-variant="thematic"] {
+      background: var(--teal-light);
+      border-color: #cbd5e1;
+      color: var(--teal-dark);
+    }
+
+    /* Lists */
+    .list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .list li {
+      position: relative;
+      padding-left: 18px;
+      margin: 0.35rem 0;
+    }
+    .list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-10);
+      box-shadow: var(--shadow-2);
+      padding: var(--s-16);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-3);
+    }
+
+    /* Stats grid */
+    .stats-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .stat-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: var(--s-16);
+      border-radius: var(--r-10);
+    }
+    .stat-card:nth-child(1) { background: var(--stat-bg-1); }
+    .stat-card:nth-child(2) { background: var(--stat-bg-2); }
+    .stat-card:nth-child(3) { background: var(--stat-bg-3); }
+    .stat-card:nth-child(4) { background: var(--stat-bg-4); }
+    .stat-card:nth-child(5) { background: var(--stat-bg-5); }
+
+    .stat-card__text {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-card__value {
+      font: 800 1.4rem var(--font-heading);
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .stat-card__label {
+      font: 600 0.9rem var(--font-body);
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Hero section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      padding: 60px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero .kicker {
+      font: 800 0.85rem var(--font-body);
+      color: var(--green);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+    .hero p.lead {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin: 0.4rem 0 0;
+    }
+    .hero-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-2);
+      margin-bottom: 14px;
+    }
+    .hero-layout {
+      display: grid;
+      gap: 28px;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+      align-items: flex-start;
+    }
+    @media (max-width: 900px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .hero-meta-grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      margin-top: 18px;
+    }
+    .hero-meta-card {
+      background: #f8fafc;
+      border-radius: var(--r-8);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+    }
+    .hero-meta-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .hero-meta-value {
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+
+    /* Section headings */
+    .section-header {
+      margin-bottom: 18px;
+    }
+    .section-header .kicker {
+      font: 800 0.78rem var(--font-body);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      margin-bottom: 2px;
+    }
+    .section-header p {
+      margin: 4px 0 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* Timeline */
+    .timeline {
+      border-left: 2px solid #e2e8f0;
+      padding-left: 16px;
+      margin: 8px 0 0;
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 4px;
+      margin-bottom: 14px;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -21px;
+      top: 4px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 3px rgba(75, 85, 99, 0.18);
+    }
+    .timeline-title {
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--ink);
+    }
+    .timeline-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .timeline-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* Table */
+    .table-wrapper {
+      margin-top: 8px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th,
+    td {
+      padding: 6px 8px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    th {
+      font-weight: 700;
+      color: #64748b;
+      background: #f8fafc;
+    }
+    tbody tr:hover {
+      background: #f9fafb;
+    }
+
+    /* Project cards */
+    .projects-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .project-card {
+      border-radius: var(--r-10);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      box-shadow: var(--shadow-2);
+      padding: 14px 14px 12px;
+    }
+    .project-header-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+    }
+    .project-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 2px;
+    }
+    .project-badge {
+      font-size: 0.75rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .project-meta {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    .project-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .project-footer {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: linear-gradient(135deg, var(--navy) 0%, #374151 100%);
+      color: #fff;
+      padding: 48px 0 32px;
+      border-top: 4px solid var(--green);
+      margin-top: 40px;
+    }
+    .site-footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    
+    /* 1. Intellectual Vitality */
+    .resource-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-10);
+      transition: transform 0.2s;
+    }
+    .resource-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--navy);
+    }
+    .resource-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--stat-bg-2);
+      color: var(--navy);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+    }
+
+    /* 2. Visual Artifacts */
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .artifact-thumb {
+      aspect-ratio: 3/4;
+      background: #e2e8f0;
+      border-radius: var(--r-8);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: box-shadow 0.2s ease;
+      display: block;
+    }
+    .artifact-thumb:hover {
+      box-shadow: var(--shadow-3);
+    }
+    .artifact-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .artifact-thumb:hover img {
+      transform: scale(1.05);
+    }
+    .artifact-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(31, 41, 55, 0.9);
+      color: #fff;
+      padding: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* 3. Endorsement Quote */
+    .quote-box {
+      background: var(--stat-bg-2);
+      border-left: 4px solid var(--navy);
+      padding: 20px;
+      border-radius: 0 var(--r-10) var(--r-10) 0;
+      margin-top: 24px;
+    }
+    .quote-text {
+      font-style: italic;
+      color: var(--ink);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .quote-author {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .quote-role {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+  </style>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "[Student Name]",
+    "description": "High school student portfolio documenting academic growth, projects, and leadership.",
+    "url": "https://YOUR-USERNAME.github.io/YOUR-REPO/"
+  }
+  </script>
+</head>
+<body>
+  <!-- MIT LICENSE TOP BANNER -->
+  <div style="background:#111827; color:#ffffff; text-align:center; padding:6px 12px; font-size:0.8rem; font-weight:600;">
+    Portfolio Template © Prof. Vinay Kanth Rao Kodipelly — Released under the MIT License. 
+    <a href="https://opensource.org/license/mit/" target="_blank" rel="noopener" style="color:#93c5fd; text-decoration:underline;">
+      View License
+    </a>
+  </div>
+  <a href="#main" class="skip">Skip to content</a>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="brand-badge">YN</span>
+        <span class="brand-title">
+          <span class="t1">[Your Name]</span>
+          <span class="t2">Math &amp; STEM Portfolio</span>
+          <span class="t3">Academic Portfolio</span>
+        </span>
+      </a>
+
+      <button
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="pointer-events: none"
+        >
+          <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <nav id="nav-links" class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#academics">Academics</a>
+        <a href="#projects">Projects & Events</a>
+        <a href="#notes">Notes</a>
+        <a href="#reflections">Reflections</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact" class="btn btn--secondary">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-layout">
+        <div>
+          <div class="kicker">Student Portfolio</div>
+          <img
+            src="images/portrait.jpg"
+            alt="Portrait of [Student Name]"
+            class="hero-avatar"
+          />
+          <h1><!-- STUDENT: Your full name -->[Your Name]</h1>
+          <p class="lead">
+            High school student building a documented academic portfolio in math and STEM. This site tracks coursework, projects, competitions, and learning artifacts over time.
+          </p>
+
+          <div class="row" style="margin-top: 18px">
+            <a href="#" class="btn btn--primary">Download Resume (PDF)</a>
+            <a href="#projects" class="btn btn--quiet">View Highlights</a>
+          </div>
+
+          <div class="hero-meta-grid">
+            <div class="hero-meta-card">
+              <div class="hero-meta-label">Grade & School</div>
+              <div class="hero-meta-value">
+                [Grade], [School Name]
+              </div>
+            </div>
+            <div class="hero-meta-card">
+              <div class="hero-meta-label">Academic Focus</div>
+              <div class="hero-meta-value">
+                Algebra II · Pre-Calculus · ACT Math Readiness
+              </div>
+            </div>
+            
+            <div class="hero-meta-card">
+              <div class="hero-meta-label">Academic Guidance</div>
+              <div class="hero-meta-value" style="font-weight:700;">
+                Mentorship (if applicable)
+              </div>
+              <div style="font-size:0.75rem; color:var(--muted); margin-top:2px;">
+                If you are working with a mentor/teacher, include them in the footer acknowledgments.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="surface" style="padding: 18px">
+          <h3>Current Goals</h3>
+          <ul class="list">
+            <li>Write full step-by-step solutions in algebra and functions.</li>
+            <li>Build disciplined note-taking for school and coaching sessions.</li>
+            <li>Prepare early for ACT / AP-level mathematics.</li>
+          </ul>
+
+          <h3 style="margin-top: 16px">Quick Highlights</h3>
+          <ul class="list">
+            <li>Participated in an academic competition or event.</li>
+            <li>Regularly works on problems beyond school textbook level.</li>
+            <li>Building and maintaining this GitHub-based portfolio over time.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">About Me</div>
+          <h2>Who I Am & What I’m Working Towards</h2>
+          <p>
+            A brief introduction, your interests, and where you see yourself going.
+          </p>
+        </div>
+
+        <div class="split">
+          <article class="card fade-in-up">
+            <h3>Short Bio</h3>
+            <p>
+              I am a high school student who enjoys mathematics, science, and
+              technology. I am learning how
+              to explain my work clearly, reflect on my mistakes, and not depend
+              only on answer keys.
+            </p>
+            <p>
+              I use this portfolio to track projects, events, mock exams, and
+              selected notes so that I can look back at my progress and prepare
+              strongly for future opportunities.
+            </p>
+          </article>
+
+          <aside class="card fade-in-up">
+            <h3>At a Glance</h3>
+            <div class="row--tight" style="margin-bottom: 4px">
+              <span class="chip" data-variant="grade">Grade: 10</span>
+              <span class="chip" data-variant="tag">STEM Track</span>
+            </div>
+            <ul class="list">
+              <li><strong>Interests:</strong> Mathematics, data, coding.</li>
+              <li><strong>Planned Path:</strong> Engineering / Computer Science.</li>
+              <li><strong>Strengths:</strong> Logical reasoning, pattern spotting.</li>
+              <li><strong>Working On:</strong> Step-by-step writing, exam timing.</li>
+            </ul>
+            <div class="quote-box fade-in-up">
+              <div class="quote-text">
+                "[Student Name] is learning to write complete, well-organized solutions and to explain reasoning clearly. The portfolio reflects consistent effort and growth over time."
+              </div>
+              <div class="quote-author">Teacher Recommendation (optional)</div>
+              <div class="quote-role">Add only if you have permission to quote a teacher/mentor.</div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACADEMICS -->
+    <section id="academics" class="section section--bg-card">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">Academics</div>
+          <h2>Courses & Skill Focus</h2>
+          <p>
+            Key math and STEM courses, plus what I am building through coaching.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card fade-in-up">
+            <h3>Current & Recent Courses</h3>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Level</th>
+                    <th>Where</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Algebra II</td>
+                    <td>Honors</td>
+                    <td>School</td>
+                    <td>Functions, quadratics, exponentials.</td>
+                  </tr>
+                  <tr>
+                    <td>Pre-Calculus Foundations</td>
+                    <td>Enrichment</td>
+                    <td>Mentorship</td>
+                    <td>Previewing trig, vectors, and limits.</td>
+                  </tr>
+                  <tr>
+                    <td>ACT Math Prep</td>
+                    <td>Coaching</td>
+                    <td>Mentorship</td>
+                    <td>Strengthening speed with written work.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <aside class="card fade-in-up">
+            <h3>Skill Focus</h3>
+            <ul class="list">
+              <li>Writing solutions fully, not jumping from question to answer.</li>
+              <li>Translating word problems into equations and inequalities.</li>
+              <li>Checking units, reasonableness, and final answer format.</li>
+              <li>Building summary sheets from my own class notes.</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="reading" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">Intellectual Vitality</div>
+          <h2>Reading &amp; Self-Study</h2>
+          <p>Books, papers, and resources I am exploring beyond the curriculum.</p>
+        </div>
+
+        <div class="grid-2">
+          <a href="#" class="resource-card fade-in-up">
+            <div class="resource-icon">📖</div>
+            <div>
+              <h3 style="font-size: 1rem; margin: 0 0 4px">Infinite Powers (Strogatz)</h3>
+              <p style="font-size: 0.85rem; margin: 0; color: var(--muted)">
+                Reading to understand the historical development of Calculus before taking the course.
+              </p>
+              <div style="margin-top:8px; font-size:0.75rem; color:var(--green); font-weight:700">
+                Status: In Progress
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="resource-card fade-in-up">
+            <div class="resource-icon">📄</div>
+            <div>
+              <h3 style="font-size: 1rem; margin: 0 0 4px">Introductory Data Tools (R)</h3>
+              <p style="font-size: 0.85rem; margin: 0; color: var(--muted)">
+                 Self-paced online module to learn basic data visualization techniques.
+              </p>
+               <div style="margin-top:8px; font-size:0.75rem; color:var(--navy); font-weight:700">
+                Status: Completed
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS & EVENTS -->
+    <section id="projects" class="section section--bg-card">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">Projects & Events</div>
+          <h2>Competitions, Challenges & Learning Experiences</h2>
+          <p>
+            A selection of events and projects that pushed me beyond regular homework.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card fade-in-up">
+            <div class="project-header-row">
+              <h3 class="project-title">Academic Competition / Event (Placeholder)</h3>
+              <span class="project-badge">Event · Team</span>
+            </div>
+            <div class="project-meta">Month Year · St. Louis, Missouri</div>
+            <p class="project-body">
+              Participated in a structured academic competition or event
+              involving problem-solving under time constraints. Reflected on
+              pacing, clarity of written solutions, and error analysis.
+            </p>
+            <div class="project-footer">
+              <span>Skills: problem-solving, time management, collaboration</span>
+              <a href="#">Reflection / Notes</a>
+            </div>
+          </article>
+
+          <article class="project-card fade-in-up">
+            <div class="project-header-row">
+              <h3 class="project-title">Competition Preparation (Placeholder)</h3>
+              <span class="project-badge">Competition Prep</span>
+            </div>
+            <div class="project-meta">Month Year</div>
+            <p class="project-body">
+              Worked on advanced problem sets beyond the standard curriculum,
+              emphasizing structured solutions and verbal explanation of
+              reasoning.
+            </p>
+            <div class="project-footer">
+              <span>Skills: contest thinking, clarity of solutions</span>
+            </div>
+          </article>
+
+          <article class="project-card fade-in-up">
+            <div class="project-header-row">
+              <h3 class="project-title">Notes-as-Portfolio Initiative</h3>
+              <span class="project-badge">Learning Artifact</span>
+            </div>
+            <div class="project-meta">Ongoing</div>
+            <p class="project-body">
+              Started scanning and uploading key pages from my notebooks so they
+              become part of this portfolio. This helps me see how my writing
+              and organisation improve over time.
+            </p>
+            <div class="project-footer">
+              <span>Skills: organisation, reflection, consistency</span>
+              <a href="#notes">View notes section</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP & SERVICE -->
+    <section id="leadership" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">Leadership</div>
+          <h2>Leadership & Contribution</h2>
+          <p>
+            Ways I support others, take initiative, and participate in the learning community.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card fade-in-up">
+            <h3>Roles & Activities</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-title">Peer Math Helper</div>
+                <div class="timeline-meta">2025</div>
+                <div class="timeline-body">
+                  Assisted peers in factorisation, equations, and function graph
+                  questions during group work, focusing on explaining steps
+                  clearly.
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-title">School / Library Programs</div>
+                <div class="timeline-meta">School or Local Library · Ongoing</div>
+                <div class="timeline-body">
+                  Participated in school or library activities related to math,
+                  STEM, or reading.
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <aside class="card fade-in-up">
+            <h3>What I’m Learning About Leadership</h3>
+            <ul class="list">
+              <li>Encouraging others to show their full work, not just answers.</li>
+              <li>Asking guiding questions instead of giving direct solutions.</li>
+              <li>Staying calm and organised when there is time pressure.</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTES / LEARNING ARTIFACTS -->
+    <section id="notes" class="section section--bg-card">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">Notes & Work</div>
+          <h2>Selected Notes & Learning Artifacts</h2>
+          <p>
+            Evidence of how I work, not just what score I got.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card fade-in-up">
+            <h3>Artifact Gallery</h3>
+            <p style="margin-bottom:12px">Snapshots of my problem-solving process and summary sheets.</p>
+            
+            <div class="artifact-grid">
+              <a href="#" class="artifact-thumb">
+                <img src="https://placehold.co/300x400/e2e8f0/1e293b?text=Notes+Page" alt="Quadratic Notes Page" />
+                <div class="artifact-caption">Quadratics Summary</div>
+              </a>
+              
+              <a href="#" class="artifact-thumb">
+                <img src="https://placehold.co/300x400/e2e8f0/1e293b?text=Work+Sample" alt="Trig Circle Handout" />
+                <div class="artifact-caption">Unit Circle Derivation</div>
+              </a>
+              
+              <a href="#" class="artifact-thumb">
+                <img src="https://placehold.co/300x400/e2e8f0/1e293b?text=Error+Log" alt="Mistake Analysis" />
+                <div class="artifact-caption">Error Analysis Log</div>
+              </a>
+            </div>
+          </article>
+
+          <aside class="card fade-in-up">
+            <h3>Methodology</h3>
+            <p>
+              My problem-solving process follows a structured academic framework emphasizing clarity, reflection, and consistency:
+            </p>
+            <ul class="list">
+              <li><strong>Structure:</strong> Full written solutions (no skipped steps).</li>
+              <li><strong>Reflection:</strong> Using the <em>"Error Analysis Log"</em> to track why mistakes happen.</li>
+              <li><strong>Consistency:</strong> Weekly review of concept maps.</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED SOLUTION -->
+    <section id="featured-solution" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">Problem Solving</div>
+          <h2>Featured Solution</h2>
+          <p>A structured example of mathematical writing.</p>
+        </div>
+
+        <article class="card fade-in-up">
+          <h3>Example: Solving a Quadratic Equation</h3>
+          <p><strong>Problem:</strong> Solve x² − 5x + 6 = 0.</p>
+          <ul class="list">
+            <li>Factor the quadratic: (x − 2)(x − 3) = 0.</li>
+            <li>Set each factor equal to zero.</li>
+            <li>x − 2 = 0 ⇒ x = 2.</li>
+            <li>x − 3 = 0 ⇒ x = 3.</li>
+          </ul>
+          <p><strong>Reflection:</strong> Writing each logical transition prevents skipped reasoning and improves accuracy.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- REFLECTION SECTION -->
+    <section id="reflections" class="section section--bg-card">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">Reflection</div>
+          <h2>Selected Reflections</h2>
+          <p>Moments where my understanding shifted through effort and revision.</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card fade-in-up">
+            <h3>From Answer-Oriented to Process-Oriented</h3>
+            <p>
+              Earlier, I focused primarily on obtaining correct answers. Over time, I began writing structured, complete steps and explaining the reasoning behind each move.
+            </p>
+            <p>
+              This shift reduced careless errors and strengthened conceptual understanding.
+            </p>
+          </article>
+
+          <article class="card fade-in-up">
+            <h3>Using Mistakes as Data</h3>
+            <p>
+              Maintaining an error log helped identify recurring patterns such as sign errors and skipped algebraic transitions.
+            </p>
+            <p>
+              Instead of correcting answers quickly, I now analyze the cause of each mistake.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXAMS & BENCHMARKS -->
+    <section id="exams" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">Exams & Benchmarks</div>
+          <h2>Key Assessments & Progress</h2>
+          <p>
+            A simple record of important tests and what I learnt from them.
+          </p>
+        </div>
+
+        <article class="card fade-in-up">
+          <h3>Selected Assessments</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Exam / Test</th>
+                  <th>Date</th>
+                  <th>Score / Result</th>
+                  <th>Reflection</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ACT Math Diagnostic</td>
+                  <td>Month Year</td>
+                  <td>Score (e.g. 24/36)</td>
+                  <td>First benchmark; identified algebra and word-problem gaps.</td>
+                </tr>
+                <tr>
+                  <td>Algebra II Midterm</td>
+                  <td>Month Year</td>
+                  <td>Grade / %</td>
+                  <td>Lost marks mainly due to skipped steps and minor mistakes.</td>
+                </tr>
+                <tr>
+                  <td>Practice Set – Algebra Review</td>
+                  <td>Month Year</td>
+                  <td>Completion / Accuracy</td>
+                  <td>Used to practise neat, complete solutions under light timing.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="section section--bg-card">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">Timeline</div>
+          <h2>Timeline of Growth</h2>
+          <p>
+            Major turning points in my learning journey so far.
+          </p>
+        </div>
+
+        <article class="card fade-in-up">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Started Coaching</div>
+              <div class="timeline-meta">Month Year</div>
+              <div class="timeline-body">
+                Began structured sessions focusing on foundations, written work,
+                and exam skills.
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">First Major Academic Event</div>
+              <div class="timeline-meta">Month Year</div>
+              <div class="timeline-body">
+                Participated in a structured academic event that required
+                disciplined preparation and post-event reflection.
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Launched This Portfolio Website</div>
+              <div class="timeline-meta">Month Year</div>
+              <div class="timeline-body">
+                Set up this GitHub Pages site to organise my work and make it
+                easier to reflect and share.
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TECHNICAL & ACADEMIC SKILLS -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">Skills</div>
+          <h2>Technical & Academic Skills</h2>
+          <p>Tools and competencies developed alongside coursework.</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card fade-in-up">
+            <h3>Technical Tools</h3>
+            <ul class="list">
+              <li>HTML & CSS (Portfolio Development)</li>
+              <li>GitHub Pages (Version Control & Publishing)</li>
+              <li>LaTeX (Mathematical Typesetting)</li>
+              <li>Introductory Data Tools (R / spreadsheets)</li>
+            </ul>
+          </article>
+
+          <article class="card fade-in-up">
+            <h3>Academic Competencies</h3>
+            <ul class="list">
+              <li>Structured mathematical writing</li>
+              <li>Error analysis and revision tracking</li>
+              <li>Timed problem-solving strategies</li>
+              <li>Concept summarization and mapping</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section--bg-card">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">Contact</div>
+          <h2>Contact & Profiles</h2>
+          <p>
+            For academic purposes, program applications, or recommendation support.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card fade-in-up">
+            <h3>Student Contact</h3>
+            <p>
+              Email:
+              <a href="mailto:student.email@example.com"
+                >student.email@example.com</a
+              >
+            </p>
+            <p>
+              GitHub:
+              <a href="https://github.com/username">github.com/username</a>
+            </p>
+            <p>
+              LinkedIn:
+              <a href="#">LinkedIn Profile (optional)</a>
+            </p>
+          </article>
+
+          <aside class="card fade-in-up">
+            <h3>Notes</h3>
+            <p>
+              This portfolio is for academic, competition, and college-readiness
+              purposes. Portfolio content is the student’s work; some artifacts were created under guidance in coaching sessions. Template and workflow credits are retained as part of professional academic practice.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div style="max-width: 600px;">
+        <h3 style="color: #fff; margin-top: 0; font-size: 1.2rem;">About This Portfolio</h3>
+        <p style="margin-top: -6px; opacity: 0.9;">
+          Personal academic portfolio for [Student Name], focused on math and STEM growth.
+        </p>
+        <p style="margin-top: 12px; font-size: 0.9rem; opacity: 0.95;">
+          HTML portfolio template © Prof. Vinay Kanth Rao Kodipelly.<br>
+          This template is released under the <strong>MIT License</strong>, which permits reuse, modification, and redistribution with attribution.<br>
+          Full license text available at 
+          <a href="https://opensource.org/license/mit/" target="_blank" rel="noopener">
+            opensource.org/license/mit
+          </a>.<br>
+          Additional academic resources: 
+          <a href="https://www.activestem.org" target="_blank" rel="noopener">
+            www.activestem.org
+          </a>.
+        </p>
+      </div>
+    </div>
+    <div
+      class="container"
+      style="margin-top: 24px; opacity: 0.75; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;"
+    >
+      &copy; <span class="js-year"></span> [Student Name] (portfolio content). 
+      Template &copy; <span class="js-year"></span> Prof. Vinay Kanth Rao Kodipelly — Licensed under the MIT License.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Set footer year
+      document.querySelectorAll('.js-year').forEach((el) => {
+        el.textContent = new Date().getFullYear();
+      });
+
+      // Mobile menu toggle
+      const menuToggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          const isExpanded = navLinks.classList.toggle("show");
+          menuToggle.setAttribute("aria-expanded", String(isExpanded));
+        });
+
+        navLinks.addEventListener("click", (e) => {
+          if (e.target.matches("a")) {
+            navLinks.classList.remove("show");
+            menuToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // Scroll animations for .fade-in-up
+      const animatedEls = document.querySelectorAll(".fade-in-up");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      animatedEls.forEach((el) => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
+
+
