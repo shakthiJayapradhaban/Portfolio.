@@ -59,9 +59,7 @@ h2.title{font-size:clamp(2rem,3.4vw,2.9rem);font-weight:600;max-width:20ch}
 .head{margin-bottom:56px}
 
 /* NAV */
-.nav{position:sticky;top:0;z-index:100;height:var(--nav-h);border-bottom:1px solid var(--line)}
-/* blur lives on a pseudo-element so it doesn't become the containing block for the fixed mobile menu */
-.nav::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(13,15,18,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.nav{position:sticky;top:0;z-index:100;height:var(--nav-h);background:rgba(13,15,18,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav .wrap{height:100%;display:flex;align-items:center;gap:24px}
 .logo{font:600 .82rem var(--mono);letter-spacing:.06em;white-space:nowrap;display:flex;align-items:center;gap:10px}
 .logo i{width:26px;height:26px;border:1.5px solid var(--cyan);display:grid;place-items:center;font:600 .72rem var(--mono);color:var(--cyan);font-style:normal}
@@ -74,10 +72,9 @@ h2.title{font-size:clamp(2rem,3.4vw,2.9rem);font-weight:600;max-width:20ch}
 .burger span{display:block;width:18px;height:1.5px;background:currentColor;margin:4px auto;transition:.2s}
 @media(max-width:1180px){
   .burger{display:block}
-  .nav::before{background:#000;backdrop-filter:none;-webkit-backdrop-filter:none}
-  .links{position:fixed;top:var(--nav-h);left:0;right:0;height:calc(100vh - var(--nav-h));height:calc(100dvh - var(--nav-h));overflow-y:auto;background:#000;flex-direction:column;padding:16px 24px;gap:0;display:none;margin:0;z-index:150}
+  .links{position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--bg);flex-direction:column;padding:16px 24px;gap:0;display:none;margin:0}
   .links.open{display:flex}
-  .links a{font-size:1.05rem;padding:18px 4px;border-bottom:1px solid var(--line2);color:#fff}
+  .links a{font-size:.95rem;padding:18px 4px;border-bottom:1px solid var(--line)}
   .links a.active::after{display:none}
   .links a.active{color:var(--cyan)}
 }
@@ -371,6 +368,15 @@ body{font-feature-settings:"ss01","cv11";text-rendering:optimizeLegibility}
   *,*::before,*::after{animation:none !important;transition-duration:.01ms !important}
   .rv{opacity:1;transform:none}
 }
+
+/* Mobile menu: solid black, always on top */
+.nav{z-index:1000}
+@media(max-width:1180px){
+  .links{background:#000 !important;z-index:1001;bottom:auto !important;height:calc(100vh - var(--nav-h));height:calc(100dvh - var(--nav-h));overflow-y:auto}
+  .links.open{display:flex;background:#000 !important}
+  .links a{background:#000;color:#fff}
+  .links a.active{color:var(--cyan)}
+}
 </style>
 </head>
 <body>
@@ -448,6 +454,7 @@ body{font-feature-settings:"ss01","cv11";text-rendering:optimizeLegibility}
         <p>I'm a 10th grader at Marquette High School who gets the most out of a project when I'm building something, testing it, and finding out what broke. Robotics and rocketry are where that shows up most for me right now. Both turn ideas into hardware that has to actually work.</p>
         <p><strong>Engineering is where my other interests meet.</strong> I enjoy coding, animation, video editing, graphic design, and writing and producing movies. Those projects taught me how to plan a big idea, break it into steps, and keep revising until it is right. That is the same loop engineers use.</p>
         <p>I'm also an aspiring coding YouTuber. On my channel, <a class="about-yt" href="https://www.youtube.com/channel/UCZyA5U5D6Dd0lAPvIJ7-UNw" target="_blank" rel="noopener noreferrer">Devistic</a>, I'm working toward sharing what I learn about programming in a way that is clear and useful to other beginners.</p>
+        <p>Through my video and editing work, I have contributed to approximately <strong>275,000 views</strong>. That experience has taught me how to turn technical work into clear, engaging content that reaches a real audience.</p>
         <p>I'm also working on four papers with my peers and Prof. Vinay Kodipelly, which is teaching me how to research, write, and revise as part of a team.</p>
         <p>I'm still learning, and I try to treat every project as practice: what worked, what failed, and what I would change next time. This site is where I keep track of that.</p>
         <p>Off the screen, I have played badminton for five years and tennis for about two. Both taught me consistency, patience, and how to improve through repetition.</p>
@@ -526,6 +533,11 @@ body{font-feature-settings:"ss01","cv11";text-rendering:optimizeLegibility}
         <div class="k">10th Grade · Current</div>
         <h3>Year Two</h3>
         <p>Continuing on the team with more experience. I'm focusing on building more carefully, testing earlier, and understanding why a design works instead of only whether it does.</p>
+      </article>
+      <article class="card rv" style="grid-column:1/-1">
+        <div class="k">Team Contributions</div>
+        <h3>Regional Champions, Super Qualifiers</h3>
+        <p>I contributed to our robotics team's win at Regionals and our advancement to Super Qualifiers. I CAD parts and edit reels for the team. I'm also learning to code so I can contribute to every part of robotics: mechanical design, programming, and media.</p>
       </article>
     </div>
 
@@ -708,13 +720,13 @@ body{font-feature-settings:"ss01","cv11";text-rendering:optimizeLegibility}
       <div class="stat"><b>90<em>+</em></b><span>Hindu Temple service hours</span></div>
       <div class="stat"><b>40</b><span>Youth Police Academy hours</span></div>
       <div class="stat"><b>5<em>yr</em></b><span>Badminton</span></div>
-      <div class="stat"><b>2</b><span>Engineering teams: robotics, rocketry</span></div>
+      <div class="stat"><b>275<em>K+</em></b><span>Views contributed</span></div>
     </div>
 
     <div class="exp-grid">
       <div class="rows rv">
         <h3>Engineering &amp; Athletics</h3>
-        <div class="row"><h4>Robotics</h4><span class="dur">9th – 10th</span><p>Two seasons so far, continuing this year.</p></div>
+        <div class="row"><h4>Robotics</h4><span class="dur">9th – 10th</span><p>Regional winners, advanced to Super Qualifiers. CAD, reel editing, and learning to code.</p></div>
         <div class="row"><h4>Rocketry</h4><span class="dur">10th · Current</span><p>Exploring forces, motion, and stability.</p></div>
         <div class="row"><h4>Research Papers</h4><span class="dur">In progress</span><p>Four papers with my peers and Prof. Vinay Kodipelly.</p></div>
         <div class="row"><h4>Badminton</h4><span class="dur">5 years</span><p>Long-term practice in consistency and focus.</p></div>
@@ -740,7 +752,7 @@ body{font-feature-settings:"ss01","cv11";text-rendering:optimizeLegibility}
     <div class="mission">
       <blockquote class="rv">I want to study <span>mechanical engineering</span> and use it to build practical solutions that work in the real world.</blockquote>
       <div class="steps rv">
-        <div class="step"><h4>Keep building</h4><p>Take on harder robotics and rocketry problems, and test earlier in every project.</p></div>
+        <div class="step"><h4>Keep building</h4><p>Take on harder robotics and rocketry problems, including programming, so I can contribute to every part of a build, and test earlier in every project.</p></div>
         <div class="step"><h4>Document everything</h4><p>Record designs, failures, and fixes so each project teaches me more than the last.</p></div>
         <div class="step"><h4>Study mechanical engineering</h4><p>Take these hands-on habits into college coursework, research, competitions, and internships.</p></div>
       </div>
@@ -780,7 +792,7 @@ const MILESTONES = [
   { tag:"Robotics", when:"9th Grade", title:"Joining Robotics",
     body:["I joined robotics and got my first experience building and testing a machine as part of a team.",
           "It introduced me to the way mechanical design, programming, and teamwork all depend on each other."],
-    points:["First season on a robotics team","Learning the build, test, improve cycle"], photo:"" },
+    points:["First season on a robotics team","Learning the build, test, improve cycle","Won Regionals and advanced to Super Qualifiers"], photo:"" },
   { tag:"School Projects", when:"9th Grade", title:"Building in the Classroom",
     body:["In 9th grade I designed and built two projects in Autodesk Inventor: the Mario Automata, a crank-driven mechanism, and the Trident Pen, a reverse engineering project I 3D printed.",
           "Both went through several versions. Each failure showed me what to change next."],
@@ -788,7 +800,7 @@ const MILESTONES = [
   { tag:"Current", when:"10th Grade", title:"Robotics, Year Two, and Rocketry",
     body:["I'm continuing in robotics with more experience, and I've started rocketry.",
           "Rocketry brings in forces, motion, stability, and real constraints, which makes it a useful next step for mechanical engineering."],
-    points:["Second year of robotics","Rocketry (current)","Four papers in progress with peers and Prof. Vinay Kodipelly"], photo:"" },
+    points:["Second year of robotics","Rocketry (current)","Four papers in progress with peers and Prof. Vinay Kodipelly","Learning to code to cover all aspects of robotics"], photo:"" },
   { tag:"Service", when:"Ongoing", title:"Serving the Community",
     body:["Outside of engineering, I volunteer at a Hindu temple and took part in the Youth Police Academy.",
           "Service has taught me responsibility, teamwork, and showing up consistently, which matter in engineering teams too."],
